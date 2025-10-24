@@ -29,7 +29,7 @@ public partial class Ngovandung231230727De02Context : DbContext
             entity.ToTable("NvdCatalog");
 
             entity.Property(e => e.NvdId)
-                .ValueGeneratedNever()
+                .ValueGeneratedOnAdd()
                 .HasColumnName("nvdId");
             entity.Property(e => e.NvdCateActive).HasColumnName("nvdCateActive");
             entity.Property(e => e.NvdCateName)

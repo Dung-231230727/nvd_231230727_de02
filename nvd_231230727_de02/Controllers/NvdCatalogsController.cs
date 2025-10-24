@@ -24,15 +24,15 @@ namespace nvd_231230727_de02.Controllers
         }
 
         // GET: NvdCatalogs/Details/5
-        public async Task<IActionResult> nvdDetails(int? id)
+        public async Task<IActionResult> nvdDetails(int? nvdid)
         {
-            if (id == null)
+            if (nvdid == null)
             {
                 return NotFound();
             }
 
             var nvdCatalog = await _context.NvdCatalogs
-                .FirstOrDefaultAsync(m => m.NvdId == id);
+                .FirstOrDefaultAsync(m => m.NvdId == nvdid);
             if (nvdCatalog == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace nvd_231230727_de02.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> nvdCreate([Bind("NvdId,NvdCateName,NvdCatePrice,NvdPicture,NvdCateQty,NvdCateActive")] NvdCatalog nvdCatalog, IFormFile? ImageFile)
+        public async Task<IActionResult> nvdCreate([Bind("NvdCateName,NvdCatePrice,NvdPicture,NvdCateQty,NvdCateActive")] NvdCatalog nvdCatalog, IFormFile? ImageFile)
         {
             if (ModelState.IsValid)
             {

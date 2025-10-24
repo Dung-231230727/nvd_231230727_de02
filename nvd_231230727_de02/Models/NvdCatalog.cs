@@ -12,9 +12,8 @@ public partial class NvdCatalog
 
     [Required]
     [Display(Name = "Tên danh mục")]
-    public string? NvdCateName { get; set; }
+    public string NvdCateName { get; set; }
 
-    [Required]
     [Display(Name = "Giá bán")]
     [Range(100, 5000, ErrorMessage = "Giá phải từ 100 đến 5000")] // Yêu cầu Câu 5
     public decimal NvdCatePrice { get; set; }
@@ -28,5 +27,5 @@ public partial class NvdCatalog
     public string? NvdPicture { get; set; }
 
     [Display(Name = "Trạng thái")]
-    public bool NvdCateActive { get; set; }
+    public bool? NvdCateActive { get; set; }
 }

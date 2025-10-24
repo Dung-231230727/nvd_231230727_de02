@@ -9,7 +9,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="nvdEdit" enctype="multipart/form-data">
+        <form asp-action="nvdEdit" enctype="multipart/form-data" id="myForm">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="NvdId" />
             <div class="form-group">
@@ -43,10 +43,13 @@
                 <label class="control-label">Chọn ảnh mới (nếu muốn đổi)</label>
                 <input type="file" name="ImageFile" class="form-control" />
             </div>
-            <div class="form-group form-check mt-2">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="NvdCateActive" /> @Html.DisplayNameFor(model => model.NvdCateActive)
-                </label>
+            <div class="form-group">
+                <label asp-for="NvdCateActive" class="control-label"></label>
+                <select asp-for="NvdCateActive" class="form-control">
+                    <option value="true">Active (True)</option>
+                    <option value="false">Non-Active (False)</option>
+                </select>
+                <span asp-validation-for="NvdCateActive" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -57,6 +60,29 @@
 </div>
 
 @section Scripts {
+    <script>
+        // Bắt sự kiện khi form được submit
+        $("#myForm").on("submit", function () {
+
+            // 1. Tìm trường input "Đơn giá" (Thay "DonGia" bằng đúng tên thuộc tính của bạn)
+            var priceInput = $("#NvdCatePrice");
+
+            if (priceInput.length > 0) {
+                // 2. Lấy giá trị hiện tại (ví dụ: "7000000,00")
+                var originalValue = priceInput.val();
+
+                // 3. Thay thế dấu phẩy (,) bằng dấu chấm (.)
+                var newValue = originalValue.replace(",", ".");
+
+                // 4. Gán lại giá trị mới (ví dụ: "7000000.00")
+                priceInput.val(newValue);
+            }
+
+            // 5. Cho phép form tiếp tục submit
+            return true;
+        });
+    </script>
+
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }

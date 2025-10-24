@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<nvd_231230727_de02.Models.NvdCatalog>
 
 @{
-    ViewData["Title"] = "NvdCatalogs";
+    ViewData["Title"] = "Danh sách Catalogs";
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -59,7 +59,7 @@
                     @(item.NvdCateActive == true ? "Active" : "Non-Active")
                 </td>
                 <td>
-                    @((item.NvdCatePrice ?? 0) * (item.NvdCateQty ?? 0))
+                    @((item.NvdCatePrice) * (item.NvdCateQty))
                 </td>
                 <td>
                     <a class="btn btn-sm btn-primary" asp-action="nvdEdit" asp-route-nvdid="@item.NvdId">Edit</a> |
