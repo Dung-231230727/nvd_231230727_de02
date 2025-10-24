@@ -1,0 +1,63 @@
+﻿@model nvd_231230727_de02.Models.NvdCatalog
+
+@{
+    ViewData["Title"] = "Cập nhật Catalog";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="nvdEdit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="NvdId" />
+            <div class="form-group">
+                <label asp-for="NvdCateName" class="control-label"></label>
+                <input asp-for="NvdCateName" class="form-control" />
+                <span asp-validation-for="NvdCateName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NvdCatePrice" class="control-label"></label>
+                <input asp-for="NvdCatePrice" class="form-control" />
+                <span asp-validation-for="NvdCatePrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NvdCateQty" class="control-label"></label>
+                <input asp-for="NvdCateQty" class="form-control" />
+                <span asp-validation-for="NvdCateQty" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="NvdPicture" />
+            <div class="form-group mt-2">
+                <label class="control-label">Ảnh hiện tại</label>
+                @if (!string.IsNullOrEmpty(Model.NvdPicture))
+                {
+                    <img src="~/images/@Model.NvdPicture" class="img-thumbnail" style="max-width: 200px;" />
+                }
+                else
+                {
+                    <p>Chưa có ảnh</p>
+                }
+            </div>
+            <div class="form-group mt-2">
+                <label class="control-label">Chọn ảnh mới (nếu muốn đổi)</label>
+                <input type="file" name="ImageFile" class="form-control" />
+            </div>
+            <div class="form-group form-check mt-2">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="NvdCateActive" /> @Html.DisplayNameFor(model => model.NvdCateActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="nvdIndex">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,47 @@
+﻿@model nvd_231230727_de02.Models.NvdCatalog
+
+@{
+    ViewData["Title"] = "Chi tiết Catalog";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NvdCateName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NvdCateName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NvdCatePrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NvdCatePrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NvdCateQty)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NvdCateQty)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NvdPicture)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NvdPicture)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NvdCateActive)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NvdCateActive)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-primary" asp-action="nvdEdit" asp-route-nvdid="@Model?.NvdId">Edit</a> |
+    <a class="btn btn-secondary" asp-action="nvdIndex">Back to List</a>
+</div>

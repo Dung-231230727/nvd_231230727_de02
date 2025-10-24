@@ -1,0 +1,72 @@
+﻿@model IEnumerable<nvd_231230727_de02.Models.NvdCatalog>
+
+@{
+    ViewData["Title"] = "NvdCatalogs";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-success" asp-action="nvdCreate">Thêm mới</a>
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NvdCateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NvdCatePrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NvdCateQty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NvdPicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NvdCateActive)
+            </th>
+            <th>
+                Thành tiền
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NvdCateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NvdCatePrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NvdCateQty)
+                </td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.NvdPicture))
+                    {
+                        <img src="~/images/@item.NvdPicture" class="img-thumbnail" style="max-width: 100px;" alt="Hình ảnh sản phẩm" />
+                    }
+                    else
+                    {
+                        <span>Không có ảnh</span>
+                    }
+                </td>
+                <td>
+                    @(item.NvdCateActive == true ? "Active" : "Non-Active")
+                </td>
+                <td>
+                    @((item.NvdCatePrice ?? 0) * (item.NvdCateQty ?? 0))
+                </td>
+                <td>
+                    <a class="btn btn-sm btn-primary" asp-action="nvdEdit" asp-route-nvdid="@item.NvdId">Edit</a> |
+                    <a class="btn btn-sm btn-info" asp-action="nvdDetails" asp-route-nvdid="@item.NvdId">Details</a> |
+                    <a class="btn btn-sm btn-danger" asp-action="nvdDelete" asp-route-nvdid="@item.NvdId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
