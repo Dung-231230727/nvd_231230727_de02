@@ -52,7 +52,7 @@ namespace nvd_231230727_de02.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> nvdCreate([Bind("NvdId,NvdCateName,NvdCatePrice,NvdCatePrice,NvdCateQty,NvdCateActive")] NvdCatalog nvdCatalog, IFormFile? ImageFile)
+        public async Task<IActionResult> nvdCreate([Bind("NvdId,NvdCateName,NvdCatePrice,NvdPicture,NvdCateQty,NvdCateActive")] NvdCatalog nvdCatalog, IFormFile? ImageFile)
         {
             if (ModelState.IsValid)
             {

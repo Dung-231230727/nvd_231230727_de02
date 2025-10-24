@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using nvd_231230727_de02.Models;
 using System.Diagnostics;
 
@@ -25,7 +25,7 @@ namespace nvd_231230727_de02.Controllers
 
         public IActionResult nvdAbout()
         {
-            ViewData["HoTen"] = "Ng� V�n D?ng";
+            ViewData["HoTen"] = "Ngô Văn Dũng";
             ViewData["MSV"] = "231230727";
             ViewData["Lop"] = "CNTT2";
             return View();
